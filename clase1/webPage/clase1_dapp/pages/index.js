@@ -1,15 +1,14 @@
-import { ConnectButton } from '@rainbow-me/rainbowkit';
 import Head from 'next/head';
-import Image from 'next/image';
-import styles from '../styles/Home.module.css';
 import Nav from '../components/Nav';
 import Number from '../components/Number';
 import React from 'react';
 import Line from '../components/Line';
 import String from '../components/String';
 import List from '../components/List';
+import { useAccount } from 'wagmi';
 
 export default function Home() {
+  const { address } = useAccount();
   return (
     <div className="bg-finanflixBlack min-h-screen pb-32">
       <Head>
@@ -19,11 +18,19 @@ export default function Home() {
       </Head>
       <Nav />
       <div className="w-8/12 lg:w-6/12 m-auto">
-        <Number />
-        <Line />
-        <String />
-        <Line />
-        <List />
+        {address === undefined ? (
+          <p className="text-finanflixWhite font-extrabold my-[30px] text-[42px]">
+            Por favor, conecte su wallet
+          </p>
+        ) : (
+          <>
+            <Number />
+            <Line />
+            <String />
+            <Line />
+            <List />
+          </>
+        )}
       </div>
     </div>
   );

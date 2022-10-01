@@ -1,15 +1,16 @@
 import React from 'react';
+import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
 const ListElement = ({ info }) => {
   return (
-    <div className="font-bold text-[18px] my-5 p-3 border-2 border-finanflixOrange flex justify-between">
+    <div className="font-bold text-[18px] my-5 p-3 border-2 border-finanflixOrange flex flex-col justify-between">
+      <p className="truncate">{info.address}</p>
       <p>{info.string}</p>
-      <p>{info.number}</p>
-      <p>
-        {info.address.slice(0, 4)}
-        {'...'}
-        {info.address.slice(-4)}
-      </p>
+      <div className="flex mt-2">
+        {[1, 2, 3, 4, 5].map((s) =>
+          s <= info.number ? <AiFillStar key={s} /> : <AiOutlineStar key={s} />
+        )}
+      </div>
     </div>
   );
 };
