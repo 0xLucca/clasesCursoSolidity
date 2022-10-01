@@ -19,10 +19,10 @@ const String = () => {
 
   return (
     <div>
-      <p className="text-finanflixWhite font-extrabold my-[30px] text-[42px]">
+      <p className="uppercase text-finanflixWhite font-extrabold my-[30px] text-[42px]">
         Ingrese un mensaje
       </p>
-      <div className="w-10/12 m-auto mb-5 h-[70px] border-[4px] bg-finanflixBlack border-finanflixWhite text-finanflixWhite text-[20px] px-5 font-bold flex">
+      <div className="w-10/12 m-auto mb-5 h-[70px] border-[4px] bg-finanflixPurple border-finanflixWhite text-finanflixWhite text-[20px] px-5 font-bold flex">
         {showString ? (
           <p className="m-auto">{string}</p>
         ) : (
@@ -33,14 +33,14 @@ const String = () => {
       <form className="w-10/12 m-auto">
         <input
           type="text"
-          onChange={(e) => setStringInput(e.target.value)}
+          onChange={(e) => setstring(e.target.value)}
           placeholder="Ingrese aqui su mensaje"
-          className="w-full h-[70px] border-[4px] bg-finanflixBlack border-finanflixOrange text-finanflixWhite text-[20px] px-5 font-bold flex"
+          className="w-full h-[70px] border-[4px] bg-finanflixPurple border-finanflixOrange text-finanflixWhite text-[20px] px-5 font-bold flex"
         />
 
         <button
-          type="button"
-          className="bg-finanflixOrange w-full py-4 font-bold text-[18px] text-finanflixBlack mt-10"
+          type="submit"
+          className="bg-finanflixOrange w-full py-4 font-bold text-[18px] text-finanflixBlack hover:bg-finanflixBlack hover:text-finanflixOrange hover:shadow transition duration-150 mt-10"
           onClick={() => handleInput()}
         >
           INGRESAR
