@@ -15,8 +15,8 @@ const Number = () => {
         Ingrese un numero
       </p>
       <form className="w-10/12 m-auto">
-        <div className="flex flex-col gap-5 md:flex-row justify-between">
-          <div className="w-full h-[120px] border-[4px] border-finanflixWhite text-finanflixWhite text-[58px] font-bold flex">
+        <div className="flex justify-between">
+          <div className="w-[235px] h-[120px] border-[4px] border-finanflixWhite text-finanflixWhite text-[58px] font-bold flex">
             {showNumber ? (
               <p className="m-auto">{number}</p>
             ) : (
@@ -26,7 +26,7 @@ const Number = () => {
           <input
             type="number"
             onChange={(e) => setnumber(e.target.value)}
-            className="w-full h-[120px] border-[4px] bg-finanflixBlack border-finanflixOrange text-finanflixWhite text-[58px] text-center font-bold flex"
+            className="w-[235px] h-[120px] border-[4px] bg-finanflixBlack border-finanflixOrange text-finanflixWhite text-[58px] text-center font-bold flex"
           />
         </div>
         <button
