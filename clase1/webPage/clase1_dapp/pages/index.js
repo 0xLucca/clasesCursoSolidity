@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Nav from '../components/Nav';
 import Number from '../components/Number';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Line from '../components/Line';
 import String from '../components/String';
 import List from '../components/List';
@@ -9,6 +9,17 @@ import { useAccount } from 'wagmi';
 
 export default function Home() {
   const { address, isConnected } = useAccount();
+
+  const [connected, setConnected] = useState(false);
+  const [wallet, setWallet] = useState(null);
+
+  useEffect(() => {
+    setConnected(isConnected);
+  }, [isConnected]);
+
+  useEffect(() => {
+    setWallet(address);
+  }, [address]);
 
   return (
     <div className="bg-finanflixPurple min-h-screen pb-32 font-poppins selection:bg-finanflixOrange">
@@ -19,7 +30,7 @@ export default function Home() {
       </Head>
       <Nav />
       <div className="w-8/12 lg:w-6/12 m-auto">
-        {!isConnected && address === undefined ? (
+        {!connected && wallet === null ? (
           <p className="text-finanflixWhite font-extrabold my-[30px] text-[42px]">
             Por favor, conecte su wallet
           </p>
