@@ -11,7 +11,7 @@ export default function Home() {
   const { address, isConnected } = useAccount();
 
   const [connected, setConnected] = useState(false);
-  const [wallet, setWallet] = useState(null);
+  const [wallet, setWallet] = useState(undefined);
 
   useEffect(() => {
     setConnected(isConnected);
@@ -30,7 +30,7 @@ export default function Home() {
       </Head>
       <Nav />
       <div className="w-8/12 lg:w-6/12 m-auto">
-        {!connected && wallet === null ? (
+        {connected === false && wallet === undefined ? (
           <p className="text-finanflixWhite font-extrabold my-[30px] text-[42px]">
             Por favor, conecte su wallet
           </p>
