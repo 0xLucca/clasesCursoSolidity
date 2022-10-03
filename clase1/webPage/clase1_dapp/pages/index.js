@@ -8,7 +8,8 @@ import List from '../components/List';
 import { useAccount } from 'wagmi';
 
 export default function Home() {
-  const { address } = useAccount();
+  const { address, isConnected } = useAccount();
+
   return (
     <div className="bg-finanflixPurple min-h-screen pb-32 font-poppins selection:bg-finanflixOrange">
       <Head>
@@ -18,7 +19,7 @@ export default function Home() {
       </Head>
       <Nav />
       <div className="w-8/12 lg:w-6/12 m-auto">
-        {address === undefined ? (
+        {!isConnected && address === undefined ? (
           <p className="text-finanflixWhite font-extrabold my-[30px] text-[42px]">
             Por favor, conecte su wallet
           </p>

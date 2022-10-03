@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { reviewsABI } from '../utils/abis/reviewsABI.js';
 import { reviewContractAddress } from '../utils/addresses';
 import { ethers } from 'ethers';
@@ -10,8 +10,12 @@ import {
 } from 'wagmi';
 
 const String = () => {
+  const clearInput = useRef();
   const [string, setstring] = useState('');
   const [showString, setshowString] = useState(false);
+
+  //onSettled 👇
+  //clearInput.current.value = null;
 
   const handleInput = () => {
     setshowString(!showString);
@@ -33,6 +37,7 @@ const String = () => {
       <form className="w-10/12 m-auto">
         <input
           type="text"
+          ref={clearInput}
           onChange={(e) => setstring(e.target.value)}
           placeholder="Ingrese aqui su mensaje"
           className="w-full h-[60px] border-[3px] bg-finanflixPurple border-finanflixOrange text-finanflixWhite text-[18px] px-5 font-medium flex"

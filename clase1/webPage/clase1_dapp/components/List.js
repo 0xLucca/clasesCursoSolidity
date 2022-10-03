@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { list } from '../data/list';
 import ListElement from './ListElement';
 import { useAccount } from 'wagmi';
 const List = () => {
+  const clearInput1 = useRef();
+  const clearInput2 = useRef();
   const { address } = useAccount();
   const [showData, setshowData] = useState(false);
   const [number, setnumber] = useState(null);
@@ -21,6 +23,11 @@ const List = () => {
     setnumber(null);
     setstring(null);
   };
+
+  //onSettled 👇
+  //clearInput1.current.value = null;
+  //clearInput2.current.value = null;
+
   return (
     <div>
       <p className="uppercase text-finanflixWhite font-extrabold my-[30px] text-[42px]">
@@ -29,6 +36,7 @@ const List = () => {
       <form className="w-10/12 m-auto">
         <input
           type="number"
+          ref={clearInput1}
           onChange={(e) => setnumber(e.target.value)}
           placeholder="Ingrese una valoracion"
           className="mb-5 w-full h-[60px] border-[3px] bg-finanflixPurple border-finanflixOrange text-finanflixWhite text-[18px] px-5 font-medium flex"
@@ -37,6 +45,7 @@ const List = () => {
         />
         <input
           type="text"
+          ref={clearInput2}
           placeholder="Ingrese un comentario"
           onChange={(e) => setstring(e.target.value)}
           className="w-full h-[60px] border-[3px] bg-finanflixPurple border-finanflixOrange text-finanflixWhite text-[18px] px-5 font-medium flex"
