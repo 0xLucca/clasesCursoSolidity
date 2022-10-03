@@ -12,8 +12,10 @@ const Nav = () => {
 
   return (
     <div className="border-b-2 border-finanflixWhite h-[60px] flex justify-between">
-      <div className="h-[28px] my-auto ml-5">
-        <Image src={ffIsologo} alt="finanflix" />
+      <div className="h-[28px] my-auto ml-5 cursor-pointer">
+        <Link href="https://finanflix.com/" target="_blank">
+          <Image src={ffIsologo} alt="finanflix" />
+        </Link>
       </div>
       <div className=" my-auto mr-5">
         <ConnectButton.Custom>
