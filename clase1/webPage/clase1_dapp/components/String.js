@@ -57,6 +57,9 @@ const String = () => {
       </p>
 
       <form className="w-10/12 m-auto">
+        <div className="w-full mb-5 h-[60px] border-[3px] bg-finanflixPurple border-finanflixWhite text-finanflixWhite text-[18px] px-5 font-medium flex">
+          <p className="my-auto">{string}</p>
+        </div>
         <input
           type="text"
           ref={clearInput}

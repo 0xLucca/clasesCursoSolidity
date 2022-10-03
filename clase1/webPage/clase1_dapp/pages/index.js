@@ -29,7 +29,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Nav />
-      <div className="w-8/12 lg:w-6/12 m-auto">
+      <div className="w-11/12 md:w-8/12 lg:w-6/12 m-auto">
         {connected === false && wallet === undefined ? (
           <p className="text-finanflixWhite font-extrabold my-[30px] text-[42px]">
             Por favor, conecte su wallet
