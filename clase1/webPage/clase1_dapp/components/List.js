@@ -34,6 +34,22 @@ const List = () => {
         Lista
       </p>
       <form className="w-10/12 m-auto">
+        <div className="flex text-finanflixWhite font-poppins font-semibold text-[18px] justify-between">
+          <p>1</p>
+          <p>2</p>
+          <p>3</p>
+          <p>4</p>
+          <p>5</p>
+        </div>
+        <input
+          className="form-range
+          appearance-none h-1.5 bg-finanflixOrange cursor-pointer mt-4 mb-5 w-full focus:outline-none focus:ring-0 focus:shadow-none"
+          type="range"
+          min="1"
+          max="5"
+          onChange={(e) => setnumber(e.target.value)}
+        />
+        {/*
         <input
           type="number"
           ref={clearInput1}
@@ -43,6 +59,7 @@ const List = () => {
           min="1"
           max="5"
         />
+         */}
         <input
           type="text"
           ref={clearInput2}
