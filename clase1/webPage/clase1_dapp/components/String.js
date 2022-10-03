@@ -13,7 +13,6 @@ const String = () => {
   const clearInput = useRef();
   const [string, setString] = useState(null);
   const [stringInput, setStringInput] = useState(null);
-  const [showString, setshowString] = useState(false);
 
   const contractRead = useContractRead({
     addressOrName: reviewContractAddress,
@@ -51,22 +50,11 @@ const String = () => {
     },
   });
 
-  const handleInput = () => {
-    setshowString(!showString);
-  };
-
   return (
     <div>
       <p className="uppercase text-finanflixWhite font-extrabold my-[30px] text-[42px]">
         Ingrese un mensaje
       </p>
-      <div className="w-10/12 m-auto mb-5 h-[60px] border-[3px] bg-finanflixPurple border-finanflixWhite text-finanflixWhite text-[18px] px-5 font-medium flex">
-        {showString ? (
-          <p className="m-auto">{string}</p>
-        ) : (
-          <p className="m-auto"></p>
-        )}
-      </div>
 
       <form className="w-10/12 m-auto">
         <input
@@ -80,7 +68,7 @@ const String = () => {
         <button
           type="button"
           className="bg-finanflixOrange w-full py-4 font-bold text-[18px] text-finanflixBlack hover:bg-finanflixBlack hover:text-finanflixOrange hover:shadow transition duration-150 mt-10"
-          onClick={() => console.log(string)}
+          onClick={() => write()}
         >
           INGRESAR
         </button>
