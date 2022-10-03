@@ -30,16 +30,16 @@ const List = () => {
         <input
           type="number"
           onChange={(e) => setnumber(e.target.value)}
-          placeholder="Ingrese un numero"
-          className="mb-5 w-full h-[70px] border-[4px] bg-finanflixPurple border-finanflixOrange text-finanflixWhite text-[20px] px-5 font-bold flex"
+          placeholder="Ingrese una valoracion"
+          className="mb-5 w-full h-[60px] border-[3px] bg-finanflixPurple border-finanflixOrange text-finanflixWhite text-[18px] px-5 font-medium flex"
           min="1"
           max="5"
         />
         <input
           type="text"
-          placeholder="Ingrese su valoracion"
+          placeholder="Ingrese un comentario"
           onChange={(e) => setstring(e.target.value)}
-          className="w-full h-[70px] border-[4px] bg-finanflixPurple border-finanflixOrange text-finanflixWhite text-[20px] px-5 font-bold flex"
+          className="w-full h-[60px] border-[3px] bg-finanflixPurple border-finanflixOrange text-finanflixWhite text-[18px] px-5 font-medium flex"
         />
 
         <button
@@ -50,7 +50,7 @@ const List = () => {
           INGRESAR
         </button>
       </form>
-      <div className="w-10/12 m-auto">
+      <div className="w-10/12 m-auto mt-16">
         {list.map((e, i) => (
           <ListElement key={i} info={e} />
         ))}

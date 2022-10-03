@@ -3,7 +3,7 @@ import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
 const ListElement = ({ info }) => {
   return (
-    <div className="font-bold text-[18px] my-5 p-3 border-2 border-finanflixOrange flex flex-col justify-between">
+    <div className="text-finanflixWhite font-semibold text-[18px] my-5 p-3 border-2 border-finanflixOrange flex flex-col justify-between">
       <p className="truncate">{info.address}</p>
       <p>{info.string}</p>
       <div className="flex mt-2">
