@@ -1,11 +1,11 @@
-import Head from 'next/head';
-import Nav from '../components/Nav';
-import Number from '../components/Number';
-import React, { useEffect, useState } from 'react';
-import Line from '../components/Line';
-import String from '../components/String';
-import List from '../components/List';
-import { useAccount } from 'wagmi';
+import Head from "next/head";
+import Nav from "../components/Nav";
+import Number from "../components/Number";
+import React, { useEffect, useState } from "react";
+import Line from "../components/Line";
+import String from "../components/String";
+import List from "../components/List";
+import { useAccount } from "wagmi";
 
 export default function Home() {
   const { address, isConnected } = useAccount();
@@ -31,7 +31,7 @@ export default function Home() {
       <Nav />
       <div className="w-11/12 md:w-8/12 lg:w-6/12 m-auto">
         {connected === false && wallet === undefined ? (
-          <p className="text-finanflixWhite font-extrabold my-[30px] text-[42px]">
+          <p className="text-center text-finanflixWhite font-extrabold my-[30px] text-[42px]">
             Por favor, conecte su wallet
           </p>
         ) : (
