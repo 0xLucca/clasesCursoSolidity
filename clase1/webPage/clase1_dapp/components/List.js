@@ -20,8 +20,6 @@ const List = () => {
   const [reviews, setReviews] = useState([]);
 
   const handleInput = () => {
-    console.log(number);
-    console.log(string);
     if (number !== null && string !== null && address !== undefined) {
       write();
     } else {

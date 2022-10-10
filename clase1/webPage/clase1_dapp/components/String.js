@@ -1,13 +1,13 @@
-import React, { useRef, useState } from 'react';
-import { reviewsABI } from '../utils/abis/reviewsABI.js';
-import { reviewContractAddress } from '../utils/addresses';
-import { ethers } from 'ethers';
+import React, { useRef, useState } from "react";
+import { reviewsABI } from "../utils/abis/reviewsABI.js";
+import { reviewContractAddress } from "../utils/addresses";
+import { ethers } from "ethers";
 import {
   useContractEvent,
   useContractRead,
   useContractWrite,
   usePrepareContractWrite,
-} from 'wagmi';
+} from "wagmi";
 
 const String = () => {
   const clearInput = useRef();
@@ -17,18 +17,18 @@ const String = () => {
   const contractRead = useContractRead({
     addressOrName: reviewContractAddress,
     contractInterface: reviewsABI,
-    functionName: 'readMessage',
+    functionName: "readMessage",
     cacheOnBlock: true,
     onSuccess(data) {
       setString(data);
-      console.log('contractRead');
+      console.log("contractRead");
     },
   });
 
   useContractEvent({
     addressOrName: reviewContractAddress,
     contractInterface: reviewsABI,
-    eventName: 'MessageUpdated',
+    eventName: "MessageUpdated",
     listener: (event) => {
       console.log(event);
       setString(event[0]);
@@ -39,14 +39,15 @@ const String = () => {
   const { config } = usePrepareContractWrite({
     addressOrName: reviewContractAddress,
     contractInterface: reviewsABI,
-    functionName: 'writeMessage',
+    functionName: "writeMessage",
     args: [stringInput],
   });
   const { data, isLoading, isSuccess, write } = useContractWrite({
     ...config,
     onSettled(data, error) {
-      console.log('onSettled');
+      console.log("onSettled");
       clearInput.current.value = null;
+      setStringInput(null);
     },
   });
 
@@ -71,7 +72,13 @@ const String = () => {
         <button
           type="button"
           className="bg-finanflixOrange w-full py-4 font-bold text-[18px] text-finanflixBlack hover:bg-finanflixBlack hover:text-finanflixOrange hover:shadow transition duration-150 mt-10"
-          onClick={() => write()}
+          onClick={() => {
+            if (stringInput) {
+              write();
+            } else {
+              alert("Enter a message");
+            }
+          }}
         >
           INGRESAR
         </button>
