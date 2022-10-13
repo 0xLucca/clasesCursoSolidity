@@ -1,5 +1,10 @@
 import Head from 'next/head';
 import Nav from '../components/Nav';
+import VendingMachineData from '../components/VendingMachineData';
+import Line from '../components/Line';
+import LineV from '../components/LineV';
+import Client from '../components/Client';
+import Repository from '../components/Repository';
 import React, { useEffect, useState } from 'react';
 import { useAccount } from 'wagmi';
 
@@ -32,7 +37,13 @@ export default function Home() {
           </p>
         ) : (
           <>
-            <p>hola</p>
+            <VendingMachineData />
+            <Line />
+            <div className="flex">
+              <Client />
+              <LineV />
+              <Repository />
+            </div>
           </>
         )}
       </div>
