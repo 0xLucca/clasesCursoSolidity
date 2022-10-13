@@ -25,7 +25,7 @@ const Repository = () => {
             className="w-full border-[3px] bg-finanflixPurple border-finanflixOrange text-finanflixWhite mt-2 text-[36px] text-center font-semibold flex py-5"
           />
           <button className="bg-finanflixOrange w-full py-4 font-bold text-[18px] text-finanflixBlack hover:bg-finanflixBlack hover:text-finanflixOrange hover:shadow transition duration-150 mt-5">
-            comprar
+            cambiar
           </button>
         </div>
         <div className="mt-5 lg:mt-0">

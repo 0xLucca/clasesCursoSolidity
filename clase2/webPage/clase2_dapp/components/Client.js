@@ -18,9 +18,17 @@ const Client = () => {
         min={1}
         className="w-full border-[3px] bg-finanflixPurple border-finanflixOrange text-finanflixWhite text-[36px] text-center font-semibold flex py-5"
       />
-      <button className="bg-finanflixOrange w-full py-4 font-bold text-[18px] text-finanflixBlack hover:bg-finanflixBlack hover:text-finanflixOrange hover:shadow transition duration-150 mt-10">
+      <button className="bg-finanflixOrange w-full py-4 font-bold text-[18px] text-finanflixBlack hover:bg-finanflixBlack hover:text-finanflixOrange hover:shadow transition duration-150 mt-5">
         comprar
       </button>
+      <div className="mt-5">
+        <p className="font-semibold text-[24px] text-finanflixWhite mb-2">
+          Mis gaseosas
+        </p>
+        <div className="flex border-[3px] uppercase font-semibold text-[36px] border-finanflixOrange py-5 text-finanflixWhite ">
+          <p className="m-auto">0</p>
+        </div>
+      </div>
     </div>
   );
 };
