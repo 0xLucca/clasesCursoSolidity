@@ -1,6 +1,6 @@
-import Image from 'next/image';
-import React from 'react';
-import bottle from '../assets/imgs/bottle_1.png';
+import Image from "next/image";
+import React from "react";
+import bottle from "../assets/imgs/bottle_1.png";
 
 const Client = () => {
   return (
@@ -8,6 +8,7 @@ const Client = () => {
       <p className="uppercase text-center font-extrabold my-[30px] text-[42px] text-finanflixWhite">
         comprador
       </p>
+
       <div className="w-8/12 m-auto rotate-[15deg] mb-5">
         <Image src={bottle} alt="bottle"></Image>
       </div>
