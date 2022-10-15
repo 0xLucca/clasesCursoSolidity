@@ -6,7 +6,7 @@ import { vendingMachineContractAddress } from "../utils/addresses";
 
 const VendingMachineData = ({ unitPrice }) => {
   const [price, setPrice] = useState(unitPrice);
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState(null);
 
   useEffect(() => {
     setPrice(unitPrice);
@@ -55,7 +55,13 @@ const VendingMachineData = ({ unitPrice }) => {
           Cantidad
         </p>
         <div className="border-[3px] border-finanflixOrange py-5">
-          <p className="uppercase font-semibold text-[36px]">{amount}</p>
+          {amount === null ? (
+            <p className="uppercase font-semibold text-[36px] text-finanflixPurple">
+              0
+            </p>
+          ) : (
+            <p className="uppercase font-semibold text-[36px]">{amount}</p>
+          )}
         </div>
       </div>
     </div>
