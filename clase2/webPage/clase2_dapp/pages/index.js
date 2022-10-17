@@ -12,7 +12,7 @@ import { vendingMachineContractAddress } from "../utils/addresses";
 import { ethers } from "ethers";
 
 export default function Home() {
-  const [unitPrice, setUnitPrice] = useState(null);
+  const [unitPrice, setUnitPrice] = useState(0);
   const { address, isConnected } = useAccount();
 
   const [connected, setConnected] = useState(false);
@@ -29,7 +29,6 @@ export default function Home() {
   const contractRead = useContractRead({
     addressOrName: vendingMachineContractAddress,
     contractInterface: vendingMachineABI,
-    abi: vendingMachineABI,
     functionName: "getPrice",
     cacheOnBlock: true,
     onSuccess(data) {
@@ -64,7 +63,7 @@ export default function Home() {
             <VendingMachineData unitPrice={unitPrice} />
             <Line />
             <div className="flex">
-              <Client />
+              <Client unitPrice={unitPrice} />
               <LineV />
               <Repository />
             </div>

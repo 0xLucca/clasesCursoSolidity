@@ -13,17 +13,21 @@ import { vendingMachineContractAddress } from "../utils/addresses";
 
 const Client = ({ unitPrice }) => {
   const clearInput1 = useRef();
-  const clearInput2 = useRef();
-  const [amountInput, setAmountInput] = useState(1);
+  const [amount, setAmount] = useState(1);
+  const [price, setPrice] = useState(0);
+
+  useEffect(() => {
+    setPrice(unitPrice);
+  }, [unitPrice]);
 
   const { config } = usePrepareContractWrite({
     addressOrName: vendingMachineContractAddress,
     contractInterface: vendingMachineABI,
     functionName: "purchase",
-    args: [amountInput],
+    args: [amount],
     overrides: {
-      //value: ethers.utils.parseEther(unitPrice).mul(amountInput),
-      value: ethers.utils.parseEther("0.01").mul(1),
+      value: ethers.utils.parseEther((amount * price).toString()),
+      //value: ethers.utils.parseEther("0.01").mul(1),
     },
   });
 
@@ -32,7 +36,7 @@ const Client = ({ unitPrice }) => {
     onSettled(data, error) {
       console.log("onSettled");
       clearInput1.current.value = null;
-      setAmountInput(null);
+      setAmount(1);
     },
   });
   return (
@@ -48,7 +52,7 @@ const Client = ({ unitPrice }) => {
         type="number"
         ref={clearInput1}
         onChange={(e) => {
-          setAmountInput(e.target.value);
+          setAmount(e.target.value);
         }}
         placeholder="1"
         min={1}
