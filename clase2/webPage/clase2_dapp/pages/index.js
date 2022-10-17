@@ -63,7 +63,7 @@ export default function Home() {
             <VendingMachineData unitPrice={unitPrice} />
             <Line />
             <div className="flex">
-              <Client unitPrice={unitPrice} />
+              <Client unitPrice={unitPrice} address={wallet} />
               <LineV />
               <Repository />
             </div>

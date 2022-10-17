@@ -11,14 +11,38 @@ import { ethers } from "ethers";
 import { vendingMachineABI } from "../utils/abis/vendingMachineABI.js";
 import { vendingMachineContractAddress } from "../utils/addresses";
 
-const Client = ({ unitPrice }) => {
+const Client = ({ unitPrice, address }) => {
   const clearInput1 = useRef();
   const [amount, setAmount] = useState(1);
   const [price, setPrice] = useState(0);
+  const [userAmount, setUserAmount] = useState(0);
 
   useEffect(() => {
     setPrice(unitPrice);
   }, [unitPrice]);
+
+  const contractRead = useContractRead({
+    addressOrName: vendingMachineContractAddress,
+    contractInterface: vendingMachineABI,
+    functionName: "getUserAmount",
+    args: [address],
+    cacheOnBlock: true,
+    onSuccess(data) {
+      console.log(ethers.utils.formatUnits(data, 0));
+      setUserAmount(ethers.utils.formatUnits(data, 0));
+    },
+  });
+
+  useContractEvent({
+    addressOrName: vendingMachineContractAddress,
+    contractInterface: vendingMachineABI,
+    eventName: "ProductPurchased",
+    listener: (event) => {
+      setUserAmount(
+        Number(userAmount) + Number(ethers.utils.formatUnits(event[1], 0))
+      );
+    },
+  });
 
   const { config } = usePrepareContractWrite({
     addressOrName: vendingMachineContractAddress,
@@ -27,7 +51,6 @@ const Client = ({ unitPrice }) => {
     args: [amount],
     overrides: {
       value: ethers.utils.parseEther((amount * price).toString()),
-      //value: ethers.utils.parseEther("0.01").mul(1),
     },
   });
 
@@ -73,7 +96,7 @@ const Client = ({ unitPrice }) => {
           Mis gaseosas
         </p>
         <div className="flex border-[3px] uppercase font-semibold text-[36px] border-finanflixOrange py-5 text-finanflixWhite ">
-          <p className="m-auto">0</p>
+          <p className="m-auto">{userAmount}</p>
         </div>
       </div>
     </div>
